@@ -12,6 +12,10 @@ let errorCount = 0;
 let startTime;
 let questionText = "";
 
+window.onkeydown = function(e) { 
+  return !(e.keyCode == 32);
+};
+
 // Load and display question
 fetch("./texts.json")
   .then((res) => res.json())
