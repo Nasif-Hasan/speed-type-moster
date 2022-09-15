@@ -12,6 +12,7 @@ let errorCount = 0;
 let startTime;
 let questionText = "";
 
+// Enter press scroll stop
 window.onkeydown = function(e) { 
   return !(e.keyCode == 32);
 };
@@ -70,6 +71,7 @@ const validate = (key) => {
 // FINISHED TYPING
 const gameOver = () => {
   document.removeEventListener("keydown", typeController);
+
   // the current time is the finish time
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
@@ -79,6 +81,7 @@ const gameOver = () => {
   resultModal.innerHTML = "";
   resultModal.classList.toggle("hidden");
   modalBackground.classList.toggle("hidden");
+
   // clear user text
   display.innerHTML = "";
   // make it inactive
@@ -129,13 +132,10 @@ const start = () => {
     count--;
   }, 1000);
   
-
 };
 
 // START Countdown
 startBtn.addEventListener("click", start);
-
-
 
 // If history exists, show it
 displayHistory();
@@ -144,7 +144,6 @@ displayHistory();
 setInterval(() => {
   const currentTime = new Date().getTime();
   const timeSpent = parseInt((currentTime - startTime) / 1000);
-
 
   document.getElementById("show-time").innerHTML = `${startTime ? timeSpent : 0} seconds`;
 }, 1000);
